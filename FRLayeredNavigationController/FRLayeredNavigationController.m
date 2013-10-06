@@ -518,9 +518,16 @@ typedef enum {
     for (FRLayerController *vc in self.layeredViewControllers) {
         FRLayeredNavigationItem *itm =  vc.layeredNavigationItem;
         if (itm.shouldHide) {
+            
+            UIInterfaceOrientation io = self.interfaceOrientation;
+            
             CGFloat tr = vc.layeredNavigationItem.hideThrashold;
             CGFloat x = CGRectGetMinX(vc.view.frame);
             CGFloat sW = CGRectGetWidth(self.view.superview.bounds);
+            if (UIInterfaceOrientationIsLandscape(io)) {
+                sW = CGRectGetHeight(self.view.superview.bounds);
+            }
+            
             CGFloat vcW = CGRectGetWidth(vc.view.frame);
             
             CGFloat hiddenWidth = (x + vcW) - sW;
