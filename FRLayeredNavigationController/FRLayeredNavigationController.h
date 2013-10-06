@@ -85,7 +85,7 @@ typedef enum {
  * The API and the usage is very similar to UINavigationController .
  */
 @interface FRLayeredNavigationController : UIViewController<UIGestureRecognizerDelegate> {
-    @private
+@private
     UIView * __weak _firstTouchedView;
     UIViewController * __weak _firstTouchedController;
     UIPanGestureRecognizer *_panGR;
@@ -265,5 +265,11 @@ typedef enum {
  * The delegate for the controller.
  */
 @property(nonatomic, weak) id<FRLayeredNavigationControllerDelegate> delegate;
+
+/**
+ * If value setted to NO, last VC don't auto snapped.
+ */
+
+@property (nonatomic) BOOL shouldAutoSnapLastViewController;
 
 @end
