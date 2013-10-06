@@ -243,6 +243,7 @@ typedef enum {
 
             [UIView animateWithDuration:0.2 animations:^{
                 [self moveToSnappingPointsWithGestureRecognizer:gestureRecognizer];
+                [self popControllersThatShouldHide];
             }
                              completion:^(__unused BOOL finished) {
             if ([self.delegate respondsToSelector:@selector(layeredNavigationController:didMoveController:)]) {
@@ -488,6 +489,28 @@ typedef enum {
         /* initialize next iteration */
         parentNavItem = meNavItem;
         parentOldPos = myOldPos;
+    }
+}
+
+- (void)popControllersThatShouldHide
+{
+    BOOL vcIsHides = NO;
+    for (FRLayerController *vc in self.layeredViewControllers) {
+        FRLayeredNavigationItem *itm =  vc.layeredNavigationItem;
+        if (itm.shouldHide) {
+            CGFloat tr = vc.layeredNavigationItem.hideThrashold;
+            CGFloat x = CGRectGetMinX(vc.view.frame);
+            CGFloat width = CGRectGetWidth(vc.view.frame);
+            CGFloat hiddenWidth = (x + width) - CGRectGetWidth([UIScreen mainScreen].bounds);
+            if (hiddenWidth >= tr) {
+                [self popViewControllerAnimated:YES direction:FRLayeredAnimationDirectionRight];
+                vcIsHides = YES;
+            }
+        }
+    }
+    if (vcIsHides) {
+        FRLayerController *layerVC = [self.layeredViewControllers lastObject];
+        [self moveViewControllersXTranslation:layerVC.layeredNavigationItem.initialViewPosition.x];
     }
 }
 

@@ -46,10 +46,12 @@
     CGFloat _snappingDistance;
     CGFloat _nextItemDistance;
     CGFloat _landscapeWidth;
+    CGFloat _hideThrashold;
     BOOL _hasChrome;
     BOOL _hasBorder;
     BOOL _displayShadow;
     BOOL _autosizeContent;
+    BOOL _shouldHide;
     FRLayerController __weak * _layerController;
 }
 
@@ -124,5 +126,16 @@
  * A custom bar button item displayed on the right of the navigation bar.
  */
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
+
+/**
+ * The property indicates what view controller should hide,
+ * after her view moved of bounds and hidden width equal or greater then threshold offset.
+ */
+@property (nonatomic, readwrite) BOOL shouldHide;
+
+/**
+ * The thrashold widht offset before view controller poped.
+ */
+@property (nonatomic, readwrite) CGFloat hideThrashold;
 
 @end

@@ -48,10 +48,12 @@
         self->_landscapeWidth = self->_width;
         self->_nextItemDistance = -1;
         self->_snappingDistance = -1;
+        self->_hideThrashold = -1;
         self->_hasChrome = YES;
         self->_displayShadow = YES;
         self->_hasBorder = YES;
         self->_autosizeContent = YES;
+        self->_shouldHide = NO;
     }
 
     return self;
