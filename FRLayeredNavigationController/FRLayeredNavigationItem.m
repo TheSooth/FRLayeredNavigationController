@@ -55,7 +55,7 @@
         self->_autosizeContent = YES;
         self->_shouldHide = NO;
     }
-
+    
     return self;
 }
 
@@ -77,6 +77,16 @@
 - (UIBarButtonItem *)rightBarButtonItem
 {
     return self.layerController.chromeView.rightBarButtonItem;
+}
+
+- (void)setTitleView:(UIView *)titleView
+{
+    self.layerController.chromeView.titleView = titleView;
+}
+
+- (UIView *)titleView
+{
+    return self.layerController.chromeView.titleView;
 }
 
 - (void)setWidth:(CGFloat)width
