@@ -39,6 +39,7 @@
                                                                item.width = 200; //600;
                                                                item.nextItemDistance = 64; //2;
                                                            }];
+        fvc.shouldAutoSnapLastViewController = NO;
         fvc.delegate = self;
         self.rootViewController = fvc;
     }

@@ -218,6 +218,8 @@
                                                    item.titleView = segControl;
                                                    item.landscapeWidth = 1000;
                                                    item.width = 300;
+                                                   item.shouldHide = YES;
+                                                   item.hideThrashold = 100;
                                                }];
     } else if (indexPath.row == 1) {
         /* push a content view controller */

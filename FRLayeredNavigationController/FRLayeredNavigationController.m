@@ -241,9 +241,8 @@ typedef enum {
             
             
             if ([self popControllersThatShouldHide]) {
-                FRLayerController *layerVC = [self.layeredViewControllers lastObject];
                 [UIView animateWithDuration:.2f animations:^{
-                    [self moveViewControllersXTranslation:layerVC.layeredNavigationItem.initialViewPosition.x / 2];
+                    [self moveToSnappingPointsWithGestureRecognizer:gestureRecognizer];
                 } completion:^(__unused BOOL finished) {
                     [self layredNavigationController:self didMoveToController:self.firstTouchedController];
                 }];
