@@ -69,6 +69,16 @@
 - (void)layeredNavigationController:(FRLayeredNavigationController*)layeredController
                   didMoveController:(UIViewController*)controller;
 
+/**
+ * Sent by the layered navigation controller when it has pushed view controller.
+ *
+ * @param layeredController The layered controller being interacted with.
+ * @param controller The view controller which has pushed.
+ */
+
+- (void)layeredNavigationController:(FRLayeredNavigationController*)layeredController
+              didPushViewController:(UIViewController*)controller;
+
 @end
 
 typedef enum {

@@ -872,6 +872,10 @@ typedef enum {
     [self addChildViewController:newVC];
     [self.view addSubview:newVC.view];
     
+    if ([self.delegate respondsToSelector:@selector(layeredNavigationController:didPushViewController:)]) {
+        [self.delegate layeredNavigationController:self didPushViewController:newVC.contentViewController];
+    }
+    
     void (^doNewFrameMove)() = ^() {
         CGFloat saved = [self savePlaceWanted:CGRectGetMinX(onscreenFrame)+width-overallWidth];
         newVC.view.frame = CGRectMake(CGRectGetMinX(onscreenFrame) - saved,
