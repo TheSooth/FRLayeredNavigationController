@@ -361,10 +361,6 @@ typedef enum {
     
     NSUInteger countOfVC = self.layeredViewControllers.count - 1;
     
-    if (!self.shouldAutoSnapLastViewController) {
-        countOfVC = (countOfVC <= 1) ? countOfVC : countOfVC -1;
-    }
-    
     for (NSUInteger i = 0; i <= countOfVC; i++) {
         FRLayerController *vc = self.layeredViewControllers[i];
         
@@ -378,6 +374,9 @@ typedef enum {
                                  CGRectGetWidth(last.view.frame));
         
         if (xTranslation == 0 && (CGFloatNotEqual(curDiff, initDiff) && CGFloatNotEqual(curDiff, maxDiff))) {
+            if (i == countOfVC && self.shouldAutoSnapLastViewController) {
+                method = SnappingPointsMethodNearest;
+            }
             switch (method) {
                 case SnappingPointsMethodNearest: {
                     if ((curDiff - initDiff) > (maxDiff - curDiff)) {
