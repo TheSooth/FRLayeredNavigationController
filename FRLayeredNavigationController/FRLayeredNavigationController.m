@@ -277,12 +277,15 @@ typedef enum {
 {
     /* get a static reference to the "hidden" UITableViewCellReorderControl class */
     static Class reorderControlClass = nil;
+    static Class tableViewContentView = nil;
     if (reorderControlClass == nil) {
         reorderControlClass = NSClassFromString(@"UITableViewCellReorderControl");
+        tableViewContentView = NSClassFromString(@"UITableViewCellContentView");
     }
     
     if ([touch.view isKindOfClass:[UISlider class]] ||
-        [touch.view isKindOfClass:reorderControlClass]) {
+        [touch.view isKindOfClass:reorderControlClass] ||
+        [touch.view isKindOfClass:tableViewContentView]) {
         // prevent recognizing touches on the slider / table view reorder control
         return NO;
     }
