@@ -289,6 +289,10 @@ typedef enum {
         // prevent recognizing touches on the slider / table view reorder control
         return NO;
     }
+    
+    if ([self.delegate respondsToSelector:@selector(layeredNavigationController:shouldReceiveTouchForController:)]) {
+       return [self.delegate layeredNavigationController:self shouldReceiveTouchForController:self.topViewController];
+    }
     return YES;
 }
 

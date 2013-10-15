@@ -79,6 +79,16 @@
 - (void)layeredNavigationController:(FRLayeredNavigationController*)layeredController
               didPushViewController:(UIViewController*)controller;
 
+/**
+ * Sent by the layered navigation controller when pan gesture is performing handle
+ *
+ * @param layeredController The layered controller being interacted with.
+ * @param controller The view controller which has pushed.
+ */
+
+- (BOOL)layeredNavigationController:(FRLayeredNavigationController*)layeredController
+    shouldReceiveTouchForController:(UIViewController *)aViewController;
+
 @end
 
 typedef enum {
