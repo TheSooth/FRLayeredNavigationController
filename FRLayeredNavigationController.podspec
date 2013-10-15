@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'FRLayeredNavigationController'
-  s.version  = '0.4.12'
+  s.version  = '0.4.14'
   s.license  = 'Modified BSD'
   s.summary  = 'Layered navigation controller for hierarchical iPad apps.'
   s.homepage = 'https://github.com/weissi/FRLayeredNavigationController'

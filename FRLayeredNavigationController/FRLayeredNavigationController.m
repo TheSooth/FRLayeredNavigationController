@@ -290,8 +290,8 @@ typedef enum {
         return NO;
     }
     
-    if ([self.delegate respondsToSelector:@selector(layeredNavigationController:shouldReceiveTouchForController:)]) {
-       return [self.delegate layeredNavigationController:self shouldReceiveTouchForController:self.topViewController];
+    if ([self.delegate respondsToSelector:@selector(layeredNavigationController:shouldReceiveTouchForController:touch:)]) {
+        return [self.delegate layeredNavigationController:self shouldReceiveTouchForController:self.topViewController touch:touch];
     }
     return YES;
 }

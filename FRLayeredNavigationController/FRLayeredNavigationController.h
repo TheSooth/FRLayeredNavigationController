@@ -84,10 +84,12 @@
  *
  * @param layeredController The layered controller being interacted with.
  * @param controller The view controller which has pushed.
+ * @param area in view there user touch
  */
 
 - (BOOL)layeredNavigationController:(FRLayeredNavigationController*)layeredController
-    shouldReceiveTouchForController:(UIViewController *)aViewController;
+    shouldReceiveTouchForController:(UIViewController *)aViewController
+                              touch:(UITouch *)aTouch;
 
 @end
 
